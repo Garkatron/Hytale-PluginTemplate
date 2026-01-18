@@ -1,13 +1,13 @@
-package com.example.plugin;
+package dev.garkatron.plugin;
 
 import com.hypixel.hytale.server.core.plugin.JavaPlugin;
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
 
 import javax.annotation.Nonnull;
 
-public class HelloPlugin extends JavaPlugin {
+public class TemplatePlugin extends JavaPlugin {
 
-    public HelloPlugin(@Nonnull JavaPluginInit init) {
+    public TemplatePlugin(@Nonnull JavaPluginInit init) {
         super(init);
     }
 

@@ -1,4 +1,4 @@
-package com.example.plugin;
+package dev.garkatron.plugin;
 
 import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.component.Store;
