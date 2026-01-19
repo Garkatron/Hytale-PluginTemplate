@@ -1,1 +1,1 @@
-rootProject.name = "Hytale-PluginTemplate"
+rootProject.name = "ExamplePlugin"

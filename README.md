@@ -1,74 +1,101 @@
-# HelloPlugin
+# 🛠️ Hytale Plugin Template
 
-A simple example plugin for Hytale servers demonstrating the basics of plugin development.
+Welcome to the **Hytale Plugin Template**! This project is a pre-configured foundation for building **Java Plugins**. It streamlines the development process by handling classpath setup, server execution, and asset bundling.
 
-📺 **Video Tutorial**: [Watch on YouTube](https://www.youtube.com/watch?v=NEw9QjzZ9nM)
+> **⚠️ Early Access Warning**
+> Hytale is currently in Early Access. Features, APIs, and this template are subject to frequent changes. Please ensure you are using the latest version of the template for the best experience.
 
-## Features
+---
 
-- Registers a `/hello` command
-- Displays a title message to players when executed
+## 📋 Prerequisites
 
-## Requirements
+Before you begin, ensure your environment is ready:
 
-- Java 17+
-- Hytale Server API (`HytaleServer.jar`)
+* **Hytale Launcher**: Installed and updated.
+* **Java 25 SDK**: Required for modern Hytale development.
+* **IntelliJ IDEA**: (Community or Ultimate) Recommended for full feature support.
 
-## Getting HytaleServer.jar
+---
 
-You need the `HytaleServer.jar` file to compile plugins. There are two ways to obtain it:
+## 🚀 Quick Start Installation
 
-### Option 1: From Hytale Launcher
+### 1. Initial Setup (Before Importing)
 
-After installing the Hytale Launcher, you can find the server files in:
+To avoid IDE caching issues, configure these files **before** you open the project in IntelliJ:
 
-| OS      | Path                                                            |
-|---------|-----------------------------------------------------------------|
-| Windows | `%appdata%\Hytale\install\release\package\game\latest`          |
-| Linux   | `$XDG_DATA_HOME/Hytale/install/release/package/game/latest`     |
-| macOS   | `~/Application Support/Hytale/install/release/package/game/latest` |
-
-Copy `HytaleServer.jar` from that directory into the `libs/` folder of this project.
-
-### Option 2: Hytale Downloader CLI
-
-For production servers, you can use the official **Hytale Downloader CLI** tool to download the latest server files. This requires OAuth2 authentication.
-
-For more details, see the official [Hytale Server Manual](https://support.hytale.com/hc/en-us/articles/45326769420827-Hytale-Server-Manual).
-
-## Building
-
-1. Place `HytaleServer.jar` in the `libs/` directory
-2. Build with Gradle:
-
-```bash
-./gradlew build
-```
-
-The compiled plugin JAR will be located at `build/libs/HelloPlugin-1.0-SNAPSHOT.jar`.
-
-## Installation
-
-Copy the built JAR file to your Hytale server's `plugins/` directory.
-
-## Usage
-
-In-game, use the command:
+* **`settings.gradle`**: Set your unique project name.
+```gradle
+rootProject.name = 'MyAwesomePlugin'
 
 ```
-/hello
-```
 
-This will display a title message saying "Hello world!" to the player.
 
-## Project Structure
+* **`gradle.properties`**: Set your `maven_group` (e.g., `com.yourname`) and starting version.
+* **`src/main/resources/manifest.json`**: Update your plugin metadata.
+* **CRITICAL:** Ensure the `"Main"` property points exactly to your entry-point class.
 
-```
-src/main/java/com/example/plugin/
-├── HelloPlugin.java    # Main plugin class
-└── HelloCommand.java   # Command implementation
-```
 
-## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+### 2. Importing the Project
+
+1. Open IntelliJ IDEA and select **Open**.
+2. Navigate to the template folder and click **OK**.
+3. Wait for the Gradle sync to finish. This will automatically download dependencies, create a `./run` folder, and generate the **HytaleServer** run configuration.
+
+### 3. Authenticating your Test Server
+
+You **must** authenticate your local server to connect to it:
+
+1. Launch the **HytaleServer** configuration in IDEA.
+2. In the terminal, run: `auth login device`.
+3. Follow the printed URL to log in via your Hytale account.
+4. Once verified, run: `auth persistence Encrypted`.
+
+---
+
+## 🎮 Developing & Testing
+
+### Running the Server
+
+If you do not see the **HytaleServer** run configuration in the top-right dropdown, click "Edit Configurations..." to unhide it. Press the **Green Play Button** to start, or the **Bug Icon** to start in Debug Mode to enable breakpoints.
+
+### Verifying the Setup
+
+1. Launch your standard Hytale Client.
+2. Connect to `Local Server` (127.0.0.1).
+3. Type `/test` in-game. If it returns your plugin version, everything is working!
+
+### Bundling Assets
+
+You can include models and textures by placing them in `src/main/resources/Common/` or `src/main/resources/Server/`. These are editable in real-time using the in-game **Asset Editor**.
+
+---
+
+## 📦 Building your Plugin
+
+To create a shareable `.jar` file for distribution:
+
+1. Open the **Gradle Tab** on the right side of IDEA.
+2. Navigate to `Tasks` -> `build` -> `build`.
+3. Your compiled plugin will be in: `build/libs/your-plugin-name-1.0.0.jar`.
+
+To install it manually, drop the JAR into `%appdata%/Hytale/UserData/Mods/`.
+
+---
+
+## 📚 Advanced Documentation
+
+For detailed guides on commands, event listeners, and professional patterns, visit our full documentation:
+👉 **[Hytale Modding Documentation](https://britakee-studios.gitbook.io/hytale-modding-documentation)**
+
+---
+
+## 🆘 Troubleshooting
+
+* **Sync Fails**: Check that your Project SDK is set to **Java 25** via `File > Project Structure`.
+* **Cannot Connect**: Ensure you ran the `auth` commands in the server console.
+* **Plugin Not Loading**: Double-check your `manifest.json` for typos in the `"Main"` class path.
+
+---
+
+**Need Help?** Visit our full guide here: **[Hytale Modding Documentation](https://britakee-studios.gitbook.io/hytale-modding-documentation)**
